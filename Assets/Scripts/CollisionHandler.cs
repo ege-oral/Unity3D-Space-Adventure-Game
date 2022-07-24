@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [SerializeField] float delayTime = 1f;
      private void OnCollisionEnter(Collision other) 
     {
         switch(other.gameObject.tag)
@@ -19,12 +20,12 @@ public class CollisionHandler : MonoBehaviour
 
             case "Finish":
                 Debug.Log("Finish have been reached.");
-                LoadNextLevel();
+                StartSuccessSequence();
                 break;
             
             default:
                 Debug.Log("Sorry you blew up.");
-                ReloadLevel();
+                StartCrashSequence();
                 break;
         }
     }
@@ -41,10 +42,28 @@ public class CollisionHandler : MonoBehaviour
         if(currentSceneIndex == SceneManager.sceneCount)
         {
             Debug.Log("Max level has been reached.");
+            SceneManager.LoadScene(0);
         }
         else
         {
             SceneManager.LoadScene(currentSceneIndex + 1);
         }        
+    }
+
+    private void StartCrashSequence()
+    {
+        StopPlyayerMovement();
+        Invoke("ReloadLevel", delayTime);
+    }
+
+    private void StartSuccessSequence()
+    {
+        StopPlyayerMovement();
+        Invoke("LoadNextLevel", delayTime);
+    }
+
+    private void StopPlyayerMovement()
+    {
+        GetComponent<Movement>().enabled = false;
     }
 }
