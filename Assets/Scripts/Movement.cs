@@ -44,10 +44,12 @@ public class Movement : MonoBehaviour
         {
             ApplyRotation(-rotateLeftRightSpeed);
         }
+        rb.freezeRotation = false;
     }
 
     private void ApplyRotation(float rotationSpeed)
     {
+        rb.freezeRotation = true; // Freezing rotation so we can manually rotate.
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
     }
 }
