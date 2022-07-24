@@ -19,6 +19,7 @@ public class CollisionHandler : MonoBehaviour
 
             case "Finish":
                 Debug.Log("Finish have been reached.");
+                LoadNextLevel();
                 break;
             
             default:
@@ -32,5 +33,18 @@ public class CollisionHandler : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    private void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if(currentSceneIndex == SceneManager.sceneCount)
+        {
+            Debug.Log("Max level has been reached.");
+        }
+        else
+        {
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }        
     }
 }
