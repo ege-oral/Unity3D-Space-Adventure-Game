@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
@@ -53,7 +54,7 @@ public class Movement : MonoBehaviour
             ApplyRotation(-rotateLeftRightSpeed);
         }
         // Unfreezing X and Y value.
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ;
     }
 
     private void ApplyRotation(float rotationSpeed)
