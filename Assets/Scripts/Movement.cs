@@ -52,12 +52,15 @@ public class Movement : MonoBehaviour
         {
             ApplyRotation(-rotateLeftRightSpeed);
         }
-        rb.freezeRotation = false;
+        // Unfreezing X and Y value.
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
     }
 
     private void ApplyRotation(float rotationSpeed)
     {
-        rb.freezeRotation = true; // Freezing rotation so we can manually rotate.
+        // Freezing rotation so we can manually rotate.
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
     }
+
 }
