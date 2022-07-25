@@ -6,22 +6,20 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float delayTime = 1f;
-
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip success;
 
+    bool isTransitioning = false;
     AudioSource myAudio;
     private void Start() 
     {
         myAudio = GetComponent<AudioSource>();
     }
 
-    private void Update() {
-        Debug.Log(SceneManager.sceneCount);
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
-    }
     private void OnCollisionEnter(Collision other) 
     {
+        if(isTransitioning) { return; }
+
         switch(other.gameObject.tag)
         {
             case "Friendly":
@@ -66,6 +64,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartCrashSequence()
     {
+        isTransitioning = true;
+        myAudio.Stop();
         myAudio.PlayOneShot(crash);
         StopPlyayerMovement();
         Invoke("ReloadLevel", delayTime);
@@ -73,6 +73,8 @@ public class CollisionHandler : MonoBehaviour
 
     private void StartSuccessSequence()
     {
+        isTransitioning = true;
+        myAudio.Stop();
         myAudio.PlayOneShot(success);
         StopPlyayerMovement();
         Invoke("LoadNextLevel", delayTime);
