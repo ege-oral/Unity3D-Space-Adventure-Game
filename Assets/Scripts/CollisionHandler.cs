@@ -8,9 +8,12 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip success;
+    AudioSource myAudio;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem crashParticles;
+
 
     bool isTransitioning = false;
-    AudioSource myAudio;
     private void Start() 
     {
         myAudio = GetComponent<AudioSource>();
@@ -67,15 +70,18 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         myAudio.Stop();
         myAudio.PlayOneShot(crash);
+        crashParticles.Play();
         StopPlyayerMovement();
         Invoke("ReloadLevel", delayTime);
     }
 
     private void StartSuccessSequence()
     {
+        
         isTransitioning = true;
         myAudio.Stop();
         myAudio.PlayOneShot(success);
+        successParticles.Play();
         StopPlyayerMovement();
         Invoke("LoadNextLevel", delayTime);
     }
