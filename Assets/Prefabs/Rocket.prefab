@@ -19489,8 +19489,8 @@ MonoBehaviour:
   rotateLeftRightSpeed: 100
   mainEngine: {fileID: 8300000, guid: 32eba6cb598d7b840a13d2df180f9287, type: 3}
   thrustParticles: {fileID: 1554203649040555999}
-  LeftThrustParticles: {fileID: 576311969527933692}
-  RightThrustParticles: {fileID: 607226420632791715}
+  leftThrustParticles: {fileID: 576311969527933692}
+  rightThrustParticles: {fileID: 607226420632791715}
 --- !u!114 &5871488755741194559
 MonoBehaviour:
   m_ObjectHideFlags: 0
