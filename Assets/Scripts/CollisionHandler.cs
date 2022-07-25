@@ -14,15 +14,22 @@ public class CollisionHandler : MonoBehaviour
 
 
     bool isTransitioning = false;
+    bool collisionDisabled = false;
+
+
+
     private void Start() 
     {
         myAudio = GetComponent<AudioSource>();
     }
 
+    private void Update() 
+    {
+        CheatKeys();
+    }
     private void OnCollisionEnter(Collision other) 
     {
-        if(isTransitioning) { return; }
-
+        if(isTransitioning || collisionDisabled) { return; }
         switch(other.gameObject.tag)
         {
             case "Friendly":
@@ -89,5 +96,17 @@ public class CollisionHandler : MonoBehaviour
     private void StopPlyayerMovement()
     {
         GetComponent<Movement>().enabled = false;
+    }
+
+    private void CheatKeys()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            collisionDisabled = !collisionDisabled; // toggle collision.
+        }
     }
 }
