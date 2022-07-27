@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+    static int numberOfDeath = 0;
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip success;
@@ -48,6 +49,8 @@ public class CollisionHandler : MonoBehaviour
             default:
                 Debug.Log("Sorry you blew up.");
                 StartCrashSequence();
+                numberOfDeath += 1;
+                Debug.Log(numberOfDeath);
                 break;
         }
     }
@@ -61,7 +64,7 @@ public class CollisionHandler : MonoBehaviour
     private void LoadNextLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if(currentSceneIndex == SceneManager.sceneCount)
+        if(currentSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             Debug.Log("Max level has been reached.");
             SceneManager.LoadScene(0);
