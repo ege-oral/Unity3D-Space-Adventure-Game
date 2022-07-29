@@ -19697,6 +19697,7 @@ MonoBehaviour:
   success: {fileID: 8300000, guid: 4208a05cb931a674ba938dc1faa10866, type: 3}
   successParticles: {fileID: 6068602096627464752}
   crashParticles: {fileID: 725806807340484545}
+  cheatSheet: {fileID: 0}
 --- !u!114 &3906539190322291918
 MonoBehaviour:
   m_ObjectHideFlags: 0

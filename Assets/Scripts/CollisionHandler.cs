@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CollisionHandler : MonoBehaviour
 {
-    static int numberOfDeath = 0;
+    public static int numberOfDeath = 0;
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip crash;
     [SerializeField] AudioClip success;
     AudioSource myAudio;
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] TextMeshProUGUI cheatSheet;
 
 
     bool isTransitioning = false;
     bool collisionDisabled = false;
 
 
-
+    private void Awake() 
+    {
+        if(numberOfDeath >= 20)
+        {
+            cheatSheet.gameObject.SetActive(true);
+        }
+    }
     private void Start() 
     {
         myAudio = GetComponent<AudioSource>();

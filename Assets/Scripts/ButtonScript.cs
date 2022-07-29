@@ -7,6 +7,7 @@ public class ButtonScript : MonoBehaviour
 {
     public void PlayAgain()
     {
+        CollisionHandler.numberOfDeath = 0;
         SceneManager.LoadScene(0);
     }
 
