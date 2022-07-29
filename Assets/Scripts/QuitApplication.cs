@@ -8,7 +8,6 @@ public class QuitApplication : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("The Escape button was pressed.");
             Application.Quit();
         }       
     }

@@ -42,23 +42,15 @@ public class CollisionHandler : MonoBehaviour
         switch(other.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("This object is friendly.");
-                break;
-
-            case "Fuel":
-                Debug.Log("You picked up fuel.");
                 break;
 
             case "Finish":
-                Debug.Log("Finish have been reached.");
                 StartSuccessSequence();
                 break;
             
             default:
-                Debug.Log("Sorry you blew up.");
                 StartCrashSequence();
                 numberOfDeath += 1;
-                Debug.Log(numberOfDeath);
                 break;
         }
     }
@@ -74,7 +66,6 @@ public class CollisionHandler : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if(currentSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("Max level has been reached.");
             SceneManager.LoadScene(0);
         }
         else
