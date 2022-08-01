@@ -8,5 +8,4 @@ You can play this game with 'W','A','S','D' and 'Space' keys. Also if we die mor
 ![image](https://user-images.githubusercontent.com/45359225/182205324-d8ba72ed-11ba-4d40-8f82-069e57fb5a90.png)
 ![image](https://user-images.githubusercontent.com/45359225/182205460-8e1cce9a-5ff8-431b-8030-ed1667cc3474.png)
 
-# Enjoy
-This game is harder than it looks trust me :D. Enjoy.
+### This game is harder than it looks trust me :D. Enjoy.
