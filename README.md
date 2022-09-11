@@ -1,4 +1,4 @@
-# Unity3D-Space-Adventure
+# Unity3D-Space-Adventure-Game
 ### There is a copy of this game in the Releases section.  
 You can play this game with 'A', 'D' and 'Space' keys. Also if we die more than 20 times the cheat sheet will display. The seet cheat content is "(Too many death, cheat sheets appear) Press 'C' to avoid obstacles, Press 'L' to load next level".
 
